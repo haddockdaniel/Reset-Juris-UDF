@@ -165,6 +165,22 @@ namespace JurisUtilityBase
                             SQL = "ALTER TABLE " + table + " drop column " + column;
                             _jurisUtility.ExecuteNonQueryCommand(0, SQL);
 
+                            SQL = "SET ANSI_NULLS ON";
+                                _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+
+                            SQL = " SET QUOTED_IDENTIFIER ON";
+                                _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+
+                             SQL ="ALTER Procedure [dbo].[qsMatterBySysNbr] " +
+					            " @pSysNbr int " +
+	 			                " AS " +
+ 				                " SELECT " +
+					            " [MatSysNbr],[MatCliNbr],[MatBillTo],[MatCode],[MatNickName],[MatReportingName],[MatDescription],[MatRemarks],[MatPhoneNbr],[MatFaxNbr],[MatContactName],[MatDateOpened],[MatStatusFlag],[MatLockFlag],[MatDateClosed],[MatOfficeCode],[MatPracticeClass],[MatFeeSch],[MatTaskCodeXref],[MatExpSch],[MatExpCodeXref],[MatQuickAction],[MatBillAgreeCode],[MatFlatFeeIncExp],[MatRetainerType],[MatFltFeeOrRetainer],[MatExpFreqCode],[MatFeeFreqCode],[MatBillMonth],[MatBillCycle],[MatExpThreshold],[MatFeeThreshold],[MatInterestPcnt],[MatInterestDays],[MatDiscountOption],[MatDiscountPcnt],[MatSurchargeOption],[MatSurchargePcnt],[MatSplitMethod],[MatSplitThreshold],[MatSplitPriorAmtBld],[MatBudgetOption],[MatBudgetPhase],[MatReqPhaseOnTrans],[MatReqTaskCdOnTime],[MatReqActyCdOnTime],[MatReqTaskCdOnExp],[MatTax1Exempt],[MatTax2Exempt],[MatTax3Exempt],[MatDateLastWork],[MatDateLastExp],[MatDateLastBill],[MatDateLastStmt],[MatDateLastPaymt],[MatLastPaymtAmt],[MatARLastBill],[MatPaySinceLastBill],[MatAdjSinceLastBill],[MatPPDBalance],[MatVisionAddr],[MatThresholdOption],[MatType],[MatNickNameUCase],[MatBillingField01],[MatBillingField02],[MatBillingField03],[MatBillingField04],[MatBillingField05],[MatBillingField06],[MatBillingField07],[MatBillingField08],[MatBillingField09],[MatBillingField10],[MatBillingField11],[MatBillingField12],[MatBillingField13],[MatBillingField14],[MatBillingField15],[MatBillingField16],[MatBillingField17],[MatBillingField18],[MatBillingField19],[MatBillingField20],[MatCTerms],[MatCStatus],[MatCStatus2] " +
+				                " FROM " +
+					            " Matter " +
+				                " where MatSysNbr = @pSysNbr";
+                            _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+
                             SQL = "ALTER TABLE " + table + " CHECK CONSTRAINT ALL";
                             _jurisUtility.ExecuteNonQueryCommand(0, SQL);
 
