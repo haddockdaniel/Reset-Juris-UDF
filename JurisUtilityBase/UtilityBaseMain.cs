@@ -159,12 +159,13 @@ namespace JurisUtilityBase
                             UDF currentUDF = definedFields.First(s => text == s.spName);
                             string column = currentUDF.UDFname;
 
-                            SQL = "ALTER TABLE " + table + " NOCHECK CONSTRAINT ALL";
-                            _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+                           // SQL = "ALTER TABLE " + table + " NOCHECK CONSTRAINT ALL";
+                           // _jurisUtility.ExecuteNonQueryCommand(0, SQL);
 
-                            SQL = "ALTER TABLE " + table + " drop column " + column;
-                            _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+                           // SQL = "ALTER TABLE " + table + " drop column " + column;
+                          //  _jurisUtility.ExecuteNonQueryCommand(0, SQL);
 
+                            /*
                             SQL = "SET ANSI_NULLS ON";
                                 _jurisUtility.ExecuteNonQueryCommand(0, SQL);
 
@@ -180,9 +181,10 @@ namespace JurisUtilityBase
 					            " Matter " +
 				                " where MatSysNbr = @pSysNbr";
                             _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+                            */
 
-                            SQL = "ALTER TABLE " + table + " CHECK CONSTRAINT ALL";
-                            _jurisUtility.ExecuteNonQueryCommand(0, SQL);
+                           // SQL = "ALTER TABLE " + table + " CHECK CONSTRAINT ALL";
+                           // _jurisUtility.ExecuteNonQueryCommand(0, SQL);
 
                             UpdateStatus("Resetting field: " + text, count, totalNumberOfRecords + 1);
                             count++;
@@ -194,6 +196,8 @@ namespace JurisUtilityBase
             UpdateStatus("All UDF fields reset.", totalNumberOfRecords + 1, totalNumberOfRecords + 1);
 
             MessageBox.Show("The process is complete", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+            System.Environment.Exit(0);
         }
         private bool VerifyFirmName()
         {
